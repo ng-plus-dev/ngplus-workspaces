@@ -1,12 +1,12 @@
 apiVersion: v2
-publisher: eclipse
-name: che-theia
+publisher: ng-plus.dev
+name: ngplus-editor
 version: next
 type: Che Editor
-displayName: theia-ide
-title: Eclipse Theia development version.
-description: Eclipse Theia, get the latest release each day.
-icon: https://raw.githubusercontent.com/theia-ide/theia/master/logo/theia-logo-no-text-black.svg?sanitize=true
+displayName: ngplus-editor
+title: NG-Plus Editor.
+description: NG-Plus Editor (based on Eclipse Theia).
+icon: https://ng-plus.dev/assets/icons/logo-long-colored.png
 category: Editor
 repository: https://github.com/ng-plus-dev/ngplus-workspaces
 firstPublicationDate: "2021-02-15"
@@ -48,7 +48,7 @@ spec:
         discoverable: false
   containers:
     - name: theia-ide
-      image: "gcr.io/ng-plus/ngplus-ide:next"
+      image: "gcr.io/ng-plus/ngplus-editor:next"
       env:
         - name: THEIA_PLUGINS
           value: local-dir:///plugins
