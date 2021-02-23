@@ -1,10 +1,9 @@
 apiVersion: v2
 publisher: ng-plus.dev
 name: ngplus-editor
-version: next
 type: Che Editor
-displayName: ngplus-editor
 title: NG-Plus Editor
+displayName: ngplus-editor
 description: NG-Plus Editor (based on Eclipse Theia)
 icon: https://ng-plus.dev/assets/icons/logo.png
 category: Editor
