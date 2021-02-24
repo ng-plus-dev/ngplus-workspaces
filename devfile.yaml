@@ -4,22 +4,42 @@ metadata:
 projects:
   - name: angular-realworld-example-app
     source:
-      type: git
       location: "https://github.com/gothinkster/angular-realworld-example-app"
+      type: git
 components:
-  - type: cheEditor
-    reference: >-
-      https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/ngplus-editor.meta.yaml
+  # - type: cheEditor
+  #   reference: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/ngplus-editor.meta.yaml
+  - id: che-incubator/typescript/latest
+    type: chePlugin
   - type: chePlugin
-    id: che-incubator/typescript/latest
-  - type: dockerimage
-    alias: nodejs
-    image: "quay.io/eclipse/che-nodejs10-community@sha256:3fdcc11fcbb109a780dacf505dc43d9c954dd6d31ddf56ee1ba58cacedaa7624"
-    memoryLimit: 1Gi
+    reference: "https://raw.githubusercontent.com/GuanglongDu/che-analyzer/master/plugin.yaml"
+    alias: analyzer
+  - mountSources: true
     endpoints:
       - name: angular
         port: 4200
-    mountSources: true
+    memoryLimit: 1Gi
+    type: dockerimage
+    image: "quay.io/eclipse/che-nodejs10-community@sha256:80ac6a66649765df29d631351ee2c680aae5d45d71f49adbfb100b5f49625549"
+    alias: nodejs
+  - mountSources: true
+    endpoints:
+      - name: copilot
+        port: 8777
+    command:
+      - /bin/sh
+    args:
+      - "-c"
+      - /app/copilot-analyzer
+    memoryLimit: 1Gi
+    type: dockerimage
+    image: "davydu/copilot-server:2.0.0"
+    alias: copilot
+    env:
+      - value: "8777"
+        name: SERVER_PORT
+  - id: donjayamanne/githistory/latest
+    type: chePlugin
 commands:
   - name: yarn install
     actions:
