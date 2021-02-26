@@ -5,7 +5,7 @@ type: Che Editor
 title: NG-Plus Editor
 displayName: ngplus-editor
 description: NG-Plus Editor (based on Eclipse Theia)
-icon: https://ng-plus.dev/assets/icons/logo.png
+icon: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/assets/ngplus-icon.png
 category: Editor
 repository: https://github.com/ng-plus-dev/ngplus-workspaces
 firstPublicationDate: "2021-02-15"
