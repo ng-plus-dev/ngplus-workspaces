@@ -1,15 +1,16 @@
 apiVersion: v2
 publisher: ng-plus.dev
 name: ngplus-editor
+version: latest
 type: Che Editor
 title: NG-Plus Editor
 displayName: ngplus-editor
 description: NG-Plus Editor (based on Eclipse Theia)
-icon: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/assets/ngplus-icon.png
+icon: /v3/images/eclipse-che-logo.png
 category: Editor
-repository: https://github.com/ng-plus-dev/ngplus-workspaces
+repository: "https://github.com/ng-plus-dev/ngplus-workspaces"
 firstPublicationDate: "2021-02-15"
-latestUpdateDate: "2021-02-22"
+latestUpdateDate: "2021-02-26"
 spec:
   endpoints:
     - name: theia
@@ -75,7 +76,9 @@ spec:
         - name: HOSTED_PLUGIN_HOSTNAME
           value: 0.0.0.0
         - name: HOSTED_PLUGIN_PORT
-          value: 3130
+          value: "3130"
+        - name: THEIA_HOST
+          value: 127.0.0.1
       mountSources: true
       ports:
         - exposedPort: 3100
@@ -83,7 +86,7 @@ spec:
         - exposedPort: 13131
         - exposedPort: 13132
         - exposedPort: 13133
-      memoryLimit: "512M"
+      memoryLimit: 512M
       volumes:
         - name: plugins
           mountPath: /plugins
