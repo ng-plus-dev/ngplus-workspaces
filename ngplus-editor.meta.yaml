@@ -10,7 +10,7 @@ icon: /v3/images/eclipse-che-logo.png
 category: Editor
 repository: "https://github.com/ng-plus-dev/ngplus-workspaces"
 firstPublicationDate: "2021-02-15"
-latestUpdateDate: "2021-02-26"
+latestUpdateDate: "2021-02-27"
 spec:
   endpoints:
     - name: theia
@@ -69,10 +69,10 @@ spec:
         discoverable: false
   containers:
     - name: theia-ide
-      image: "gcr.io/ng-plus/ngplus-editor:next"
+      image: "public.ecr.aws/d6f4e0m9/ng-plus/ngplus-editor:latest"
       env:
         - name: THEIA_PLUGINS
-          value: local-dir:///plugins
+          value: "local-dir:///plugins"
         - name: HOSTED_PLUGIN_HOSTNAME
           value: 0.0.0.0
         - name: HOSTED_PLUGIN_PORT
