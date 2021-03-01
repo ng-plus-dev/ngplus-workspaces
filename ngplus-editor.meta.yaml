@@ -5,12 +5,12 @@ version: latest
 type: Che Editor
 title: NG-Plus Editor
 displayName: ngplus-editor
-description: NG-Plus Editor (based on Eclipse Theia)
-icon: /v3/images/eclipse-che-logo.png
+description: NG-Plus Editor
+icon: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/assets/ngplus-icon.png
 category: Editor
 repository: "https://github.com/ng-plus-dev/ngplus-workspaces"
 firstPublicationDate: "2021-02-15"
-latestUpdateDate: "2021-02-27"
+latestUpdateDate: "2021-03-01"
 spec:
   endpoints:
     - name: theia
