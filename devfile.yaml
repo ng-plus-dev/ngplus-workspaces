@@ -1,37 +1,39 @@
 apiVersion: 1.0.0
 metadata:
   generateName: angular-
+attributes:
+  persistVolumes: "false"
+  asyncPersist: "true"
 projects:
-  - name: angular-realworld-example-app
+  - name: angular-ngrx-material-starter
     source:
-      location: "https://github.com/gothinkster/angular-realworld-example-app"
+      location: "https://github.com/tomastrajan/angular-ngrx-material-starter"
       type: git
 components:
-  # - type: cheEditor
-  #   reference: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/ngplus-editor.meta.yaml
+  - type: cheEditor
+    alias: che-theia
+    reference: https://raw.githubusercontent.com/ng-plus-dev/ngplus-workspaces/main/ngplus-editor.meta.yaml
+    memoryLimit: 2Gi
   - id: che-incubator/typescript/latest
     type: chePlugin
   - type: chePlugin
-    reference: "https://raw.githubusercontent.com/GuanglongDu/che-analyzer/master/plugin.yaml"
     alias: analyzer
-  - mountSources: true
+    reference: "https://raw.githubusercontent.com/GuanglongDu/che-analyzer/master/plugin.yaml"
+  - type: dockerimage
+    image: "quay.io/eclipse/che-nodejs12-community:7.26.1"
+    mountSources: true
     endpoints:
       - name: angular
         port: 4200
-    memoryLimit: 1Gi
-    type: dockerimage
-    image: "quay.io/eclipse/che-nodejs10-community@sha256:80ac6a66649765df29d631351ee2c680aae5d45d71f49adbfb100b5f49625549"
+    memoryLimit: 2Gi
     alias: nodejs
   - mountSources: true
-    endpoints:
-      - name: copilot
-        port: 8777
     command:
       - /bin/sh
     args:
       - "-c"
       - /app/copilot-analyzer
-    memoryLimit: 1Gi
+    memoryLimit: 2Gi
     type: dockerimage
     image: "davydu/copilot-server:2.0.0"
     alias: copilot
@@ -43,25 +45,25 @@ components:
 commands:
   - name: yarn install
     actions:
-      - type: exec
-        component: nodejs
+      - component: nodejs
+        type: exec
         command: yarn install
-        workdir: "${CHE_PROJECTS_ROOT}/angular-realworld-example-app"
+        workdir: "${CHE_PROJECTS_ROOT}/angular-ngrx-material-starter"
   - name: build
     actions:
-      - type: exec
-        component: nodejs
+      - component: nodejs
+        type: exec
         command: yarn run build
-        workdir: "${CHE_PROJECTS_ROOT}/angular-realworld-example-app"
+        workdir: "${CHE_PROJECTS_ROOT}/angular-ngrx-material-starter"
   - name: start
     actions:
-      - type: exec
-        component: nodejs
+      - component: nodejs
+        type: exec
         command: yarn run start --host 0.0.0.0 --disableHostCheck true
-        workdir: "${CHE_PROJECTS_ROOT}/angular-realworld-example-app"
+        workdir: "${CHE_PROJECTS_ROOT}/angular-ngrx-material-starter"
   - name: lint
     actions:
-      - type: exec
-        component: nodejs
+      - component: nodejs
+        type: exec
         command: yarn run lint
-        workdir: "${CHE_PROJECTS_ROOT}/angular-realworld-example-app"
+        workdir: "${CHE_PROJECTS_ROOT}/angular-ngrx-material-starter"
